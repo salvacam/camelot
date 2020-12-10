@@ -1,0 +1,78 @@
+<!--
+<!doctype html>
+<html lang="en-us">
+     <head>
+       <meta charset="utf-8">
+       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+       <title>js-dos api</title>
+       <style type="text/css">
+         .dosbox-container { width: 640px; height: 400px; }
+       </style>
+     </head>
+     <body>
+       <div id="dosbox"></div>
+       <br/>
+       <button onclick="dosbox.requestFullScreen();">Make fullscreen</button>
+       
+       <script type="text/javascript" src="https://js-dos.com/cdn/js-dos-api.js"></script>
+       <script type="text/javascript">
+         var dosbox = new Dosbox({
+           id: "dosbox",
+           onload: function (dosbox) {
+             dosbox.run("./camelot.zip", "./camelot.exe");
+           },
+           onrun: function (dosbox, app) {
+             console.log("App '" + app + "' is runned");
+           }
+         });
+       </script>
+     </body>
+   </html>
+-->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>js-dos 6.22, Camelot</title>
+  <script src="https://js-dos.com/6.22/current/js-dos.js"></script>
+  <style>
+    html, body, canvas, .dosbox-container {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    canvas {
+      min-width: 640px;
+      height: 480px;
+      image-rendering: pixelated;
+    }
+  </style>
+</head>
+
+<body>
+  <div style="width: 640px; height: 480px">
+    <canvas id="jsdos"></canvas>
+  </div>
+  <button style="position: absolute; right: 1em; top: 1em;" onclick="ci.fullscreen()">Fullscreen</button>
+  <script>
+    Dos(document.getElementById("jsdos"), { 
+      wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
+      //cycles: auto,
+      //autolock: true,
+    }).ready(function (fs, main) {
+      fs.extract("./camelot.zip").then(function () {
+        main(["-c", "camelot.exe"]).then(function (ci) {
+          window.ci = ci;
+          //DosController.Qwerty(ci.getParentDiv(),ci.getKeyEventConsumer());
+          DosController.Move(ci.getParentDiv(), ci.getKeyEventConsumer());
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

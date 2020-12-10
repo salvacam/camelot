@@ -67,7 +67,7 @@
       fs.extract("./camelot.zip").then(function () {
         main(["-c", "camelot.exe"]).then(function (ci) {
           window.ci = ci;
-          //DosController.Qwerty(ci.getParentDiv(),ci.getKeyEventConsumer());
+          DosController.Qwerty(ci.getParentDiv(),ci.getKeyEventConsumer());
           DosController.Move(ci.getParentDiv(), ci.getKeyEventConsumer());
         });
       });

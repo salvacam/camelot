@@ -46,15 +46,15 @@
       overflow: hidden;
     }
     canvas {
-      min-width: 640px;
-      height: 480px;
+      min-width: 1280px;
+      height: 960px;
       image-rendering: pixelated;
     }
   </style>
 </head>
 
 <body>
-  <div style="width: 640px; height: 480px">
+  <div style="width: 1280px; height: 960px">
     <canvas id="jsdos"></canvas>
   </div>
   <button style="position: absolute; right: 1em; top: 1em;" onclick="ci.fullscreen()">Fullscreen</button>
@@ -67,7 +67,7 @@
       fs.extract("./camelot.zip").then(function () {
         main(["-c", "camelot.exe"]).then(function (ci) {
           window.ci = ci;
-          //DosController.Qwerty(ci.getParentDiv(),ci.getKeyEventConsumer());
+          DosController.Qwerty(ci.getParentDiv(),ci.getKeyEventConsumer());
           DosController.Move(ci.getParentDiv(), ci.getKeyEventConsumer());
         });
       });

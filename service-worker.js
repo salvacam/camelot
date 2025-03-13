@@ -1,4 +1,4 @@
-var cacheName = 'camelot_jsdos-v0.0.91';
+var cacheName = 'camelot_jsdos-v0.0.92';
 
 var filesToCache = [
   './',
